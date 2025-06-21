@@ -1,40 +1,233 @@
 
-Software Project Management Assignment -Wk4
-1.(a) Timely delivery is crucial in software management for these reasons: customer satisfaction, market competitiveness, cost control, resource allocation,contractual obligations, stakeholder confidence, stakeholder confidence, and agile and iterative development.
-(b) Project managers  can ensure that deadlines are met through taking these steps: clear planning, realistic scheduling, prioritization, resources management, regular monitoring, effective communication, risk management and scope control.
+Skip to content
+Open sidebar
 
-2(a) Effective cost control contributes to the success of a software Project  for these reasons:
-preventing budget overruns, improving profitability, enhancing decision-making, building stake holders confidence, enabling better forecasting, supporting timely delivery, and reducing risk
-(b)  Strategies to prevent budget overruns are: accurate budget planning, defining clear project scope, using a contingency fund, tracking expenses regularly, prioritizing features, control change request, allocating resources wisely, regular communication, and reviewing contracts.
+ChatGPT
+You said:
+Build a crypto currency advisor  chat box with the theme' my first AI financial sidekick'
+ChatGPT said:
+Here’s a basic concept and code for building a cryptocurrency advisor chatbot with the theme “My First AI Financial Sidekick”. I’ll provide a simple web-based chatbot using React, Tailwind CSS, and a bit of styled personality to feel like a helpful AI sidekick.
 
-3(a) Agile methodologies are iterative and incremental whereas Waterfall methodologies are linear and sequential.;
-Planning in Agile methodologies is flexible but is fixed in Waterfall methodologies;
-Development phases in Agile methodologies are done in sprints  while they follow a strict order in Waterfall methodologies;
-Customer involvement is high in Agile methodologies but low in Waterfall methodologies;
-Team collaboration is high in Agile methodologies but is non-existent in Waterfall methodologies.
-(b) Main advantages of Agile methodologies are:  flexibility, adaptability, faster delivery, customer involvement, improved quality,  and customer involvement.
-Disadvantages of Agile Methodologies are: less predictability, scope creep, requiring active user involvement, limited documentation, and not ideal for all projects
-Advantages of Waterfall methodologies are: simplicity and easiness of management, proper documentation. easy to track 
-Disadvantages of Waterfall methodologies are: inflexibility , delay in product delivery, late testing.
+🔧 Features
+Welcomes user with a friendly intro.
 
-4(a) Agile is useful for dynamic projects e.g.  ones where flexibility, fast feedback,and early delivery are priorities.
-Waterfall is useful for projects with stable, well-defined requirements and where a clear structure is essential.
+Answers questions about cryptocurrency (using placeholder AI responses or APIs).
 
-5(a) Methods for ensuring quality assurance (QA) throughout a software Project  are: defining clear requirements, implementing a QA plan, conducting Regular Code Review, using Automated Testing ,performing Continuous Testing.
-(b) Reason for maintaining high standard in software projects are: ensuring product quality, building user trust and satisfaction , reducing long-term costs, improving security, and promoting team accountability 
+Offers coin price lookups (placeholder for real-time data).
 
-6(a) Defining a project scope  contributes to successful project planning in these ways: clarifying objectives and scope of the projects, setting clear expectations, identifying  constraints and risks early, guiding resources allocation, and enabling measurable progress.
-(b) A Work breakdown Structure (WBS)  means a visual and hierarchical breakdown of a project into small, manageable parts. Also, it organizes total scope of a project  into structured sections- starting from  the overall project goal and breaking it down into deliverables, and work packages.
+Encourages financial literacy with playful language.
 
-7(a) Benefits of developing a detailed project schedule are: clear timeline and deadlines, improved resources management, better coordination, early identification of delays, ,and increasing stakeholder management 
-(b) Gantt charts assist in detailed project schedule in these ways: visual timelines of tasks, clear task dependencies, projects tracking, resources allocation, and  milestones management 
- 
-8(a) Core issues that a software aims to address are: problem resolution, process automation, information management, communication gapa, human error reduction, scalability and growth, security and compliance,and user accessibility.
-(b) The core issues are important to the target audience for the following reasons: solving real problems, improving efficiency, enhancing accuracy, reducing costs, enabling better communication, providing security and trust, supporting growth, and  enhancing accessibility and convenience.
+📦 Tech Stack
+React (with Tailwind CSS)
 
-9.A clear definition of the problem leads to a more effective software solution as it provides a focused understanding of what needs to be solved. When the problem is accurately defined, the development team designs solutions that directly address user needs, avoid unnecessary features, and stay aligned with the project's goals.
+Can be upgraded with ChatGPT API + CoinGecko/CoinMarketCap API for real data.
 
-10. I would describe my software solution to an audience  y concentrating on the following: simplicity of my communication, value of the software, relevance of the value to the pain point of the target audience, keeping my address as short as possible, using an audio-visual demo,and ending with a call to action.
-11. Main features or functionalist that make a software stand out are: user-friendly interface (UI/UX),high performance, customization and flexibility, integration capabilities, robust security, scalability, automation, real-time data and reporting, mobile accessibility, regular updates and support.
-12. The available data regarding the market size  and growth potential for my (learning) software in Lagos State, Nigeria is around  eight billion naira(#8, 000,000,000).
-13. Understanding market trends help software positioning and development in the following ways: understanding consumer needs and pain points, guiding features prioritization, helping definition of Unique Value Proposition (UVP), information pricing strategy, shaping marketing, reducing risk of obsolescence,etc.
+💻 Code: React + Tailwind Frontend
+Let’s create the interface first:
+
+// File: CryptoSidekick.tsx
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export default function CryptoSidekick() {
+  const [messages, setMessages] = useState([
+    { sender: "sidekick", text: "Hi! I'm your AI financial sidekick 🤖💰. Ask me anything about crypto!" },
+  ]);
+  const [userInput, setUserInput] = useState("");
+
+  const handleSend = () => {
+    if (!userInput.trim()) return;
+
+    const newMessages = [...messages, { sender: "user", text: userInput }];
+    const sidekickResponse = getSidekickResponse(userInput);
+
+    setMessages([...newMessages, { sender: "sidekick", text: sidekickResponse }]);
+    setUserInput("");
+  };
+
+  const getSidekickResponse = (input: string): string => {
+    input = input.toLowerCase();
+    if (input.includes("bitcoin")) return "Bitcoin (BTC) is the OG of crypto! It’s like digital gold. 💎";
+    if (input.includes("price")) return "To get real-time prices, plug me into a crypto price API like CoinGecko!";
+    if (input.includes("eth") || input.includes("ethereum")) return "Ethereum (ETH) is more than a coin—it's a platform for smart contracts! 🧠";
+    return "That's a great question! I'll get smarter with every conversation. Try asking about a specific coin.";
+  };
+
+  return (
+    <div className="max-w-xl mx-auto mt-10 p-4 rounded-2xl bg-gradient-to-tr from-blue-200 to-purple-200 shadow-xl">
+      <h1 className="text-2xl font-bold text-center mb-4">💬 My First AI Financial Sidekick</h1>
+      <Card className="h-96 overflow-y-auto p-4 space-y-2 bg-white rounded-xl shadow-inner">
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`flex ${msg.sender === "sidekick" ? "justify-start" : "justify-end"}`}>
+            <div className={`max-w-xs px-4 py-2 rounded-lg ${msg.sender === "sidekick" ? "bg-blue-100" : "bg-green-200"}`}>
+              <p className="text-sm">{msg.text}</p>
+            </div>
+          </div>
+        ))}
+      </Card>
+      <div className="mt-4 flex gap-2">
+        <Input
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          placeholder="Ask about Bitcoin, Ethereum..."
+          className="flex-1"
+        />
+        <Button onClick={handleSend}>Send</Button>
+      </div>
+    </div>
+  );
+}
+🧠 AI Assistant Personality: “Crypto Buddy”
+Name: ByteBuddy (Your first AI financial sidekick)
+
+Voice: Friendly, curious, and beginner-friendly.
+
+Tone: “No jargon, just crypto clarity!”
+
+🔄 Upgrade Ideas
+Real-time prices: Integrate with CoinGecko API.
+
+ChatGPT integration: Replace getSidekickResponse with OpenAI API.
+
+User onboarding: Explain key crypto concepts interactively.
+
+Mobile app: Wrap with React Native for cross-platform use.
+
+Save chat history with local storage or Firebase.
+
+Would you like me to deploy this to a preview site, integrate APIs, or help turn it into a mobile app?
+
+You said:
+Turn it into a mobile app!
+ChatGPT said:
+Great! Let's turn "My First AI Financial Sidekick" into a mobile app using React Native (Expo) — the fastest and easiest way to build and test your app on Android & iOS with just one codebase.
+
+📱 App Overview: ByteBuddy – Your First AI Financial Sidekick
+Built with React Native + Expo
+
+Simple chatbot interface
+
+Crypto advice & fun facts
+
+Prepped for API upgrades (OpenAI, CoinGecko)
+
+✅ Requirements
+Before starting, make sure you:
+
+Install Node.js
+
+Install Expo CLI:
+
+npm install -g expo-cli
+Create a new Expo project:
+
+expo init ByteBuddy
+cd ByteBuddy
+Choose the blank (TypeScript) template.
+
+🧠 ByteBuddy App Code (React Native)
+📁 App.tsx
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, FlatList, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+
+export default function App() {
+  const [messages, setMessages] = useState([
+    { sender: 'bot', text: "Hey! I'm ByteBuddy 🤖💰— your first AI financial sidekick! Ask me anything about crypto." }
+  ]);
+  const [input, setInput] = useState('');
+
+  const handleSend = () => {
+    if (!input.trim()) return;
+
+    const userMessage = { sender: 'user', text: input };
+    const botResponse = getBotResponse(input);
+
+    setMessages(prev => [...prev, userMessage, { sender: 'bot', text: botResponse }]);
+    setInput('');
+  };
+
+  const getBotResponse = (msg: string): string => {
+    const m = msg.toLowerCase();
+    if (m.includes("bitcoin")) return "Bitcoin is like digital gold. It's decentralized and capped at 21 million coins!";
+    if (m.includes("ethereum")) return "Ethereum allows smart contracts—code that runs on the blockchain!";
+    if (m.includes("price")) return "Live prices are coming soon! I’ll need a real-time feed like CoinGecko's. 📊";
+    return "Hmm, that's interesting! Try asking me about Bitcoin, Ethereum, or prices.";
+  };
+
+  const renderItem = ({ item }: any) => (
+    <View style={[styles.messageBubble, item.sender === 'bot' ? styles.bot : styles.user]}>
+      <Text style={styles.messageText}>{item.text}</Text>
+    </View>
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>💬 ByteBuddy</Text>
+      <FlatList
+        data={messages}
+        renderItem={renderItem}
+        keyExtractor={(_, index) => index.toString()}
+        contentContainerStyle={styles.chat}
+      />
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+        <View style={styles.inputRow}>
+          <TextInput
+            value={input}
+            onChangeText={setInput}
+            placeholder="Ask ByteBuddy..."
+            style={styles.input}
+          />
+          <TouchableOpacity onPress={handleSend} style={styles.sendButton}>
+            <Text style={styles.sendText}>Send</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#E8EAF6' },
+  title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginVertical: 16, color: '#3F51B5' },
+  chat: { paddingHorizontal: 16, paddingBottom: 10 },
+  messageBubble: { padding: 12, borderRadius: 16, marginVertical: 6, maxWidth: '80%' },
+  bot: { alignSelf: 'flex-start', backgroundColor: '#D1C4E9' },
+  user: { alignSelf: 'flex-end', backgroundColor: '#C8E6C9' },
+  messageText: { fontSize: 14 },
+  inputRow: { flexDirection: 'row', padding: 10, backgroundColor: '#fff', alignItems: 'center' },
+  input: { flex: 1, padding: 10, borderColor: '#ccc', borderWidth: 1, borderRadius: 8, marginRight: 10 },
+  sendButton: { backgroundColor: '#3F51B5', paddingVertical: 10, paddingHorizontal: 16, borderRadius: 8 },
+  sendText: { color: '#fff', fontWeight: 'bold' }
+});
+🚀 How to Run on Mobile
+Install Expo Go from the Play Store or App Store.
+
+Run your app locally:
+
+expo start
+Scan the QR code with Expo Go app to test on your phone.
+
+🔮 Future Upgrades
+Feature	Description
+🔌 ChatGPT API	Replace static responses with real AI answers
+📈 CoinGecko API	Real-time crypto prices
+🧠 Crypto Quiz	Teach users key terms and concepts
+💾 Save History	Store chats locally (AsyncStorage)
+🎨 Custom Avatar	Add avatar and personality to ByteBuddy
+Would you like:
+
+A working GitHub repo?
+
+To turn this into a publishable APK/iOS build?
+
+To add real OpenAI and CoinGecko API integration next?
+
+Let me know and I’ll help you level up ByteBuddy!
+
+
+
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info.
