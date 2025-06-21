@@ -14,7 +14,7 @@ Encourages financial literacy with playful language.
 
 📦 Tech Stack
 React (with Tailwind CSS)
-
+content
 Can be upgraded with ChatGPT API + CoinGecko/CoinMarketCap API for real data.
 
 💻 Code: React + Tailwind Frontend
@@ -449,8 +449,4 @@ ChatGPT can make mistakes. Check important info.
 
 Let me know and I’ll help you level up ByteBuddy!
 
-
-
-
-No file chosenNo file chosen
-ChatGPT can make mistakes. Check important info.
+---
