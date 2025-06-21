@@ -1,11 +1,6 @@
 
 Skip to content
 Open sidebar
-
-ChatGPT
-You said:
-Build a crypto currency advisor  chat box with the theme' my first AI financial sidekick'
-ChatGPT said:
 Here’s a basic concept and code for building a cryptocurrency advisor chatbot with the theme “My First AI Financial Sidekick”. I’ll provide a simple web-based chatbot using React, Tailwind CSS, and a bit of styled personality to feel like a helpful AI sidekick.
 
 🔧 Features
